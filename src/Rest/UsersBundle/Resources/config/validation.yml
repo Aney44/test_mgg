@@ -1,0 +1,26 @@
+Rest\UsersBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: login
+    properties:
+        email:
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+#                checkMX: true
+        login:
+            - NotBlank: ~
+            - NotNull: ~
+            - Length:
+                min: 2
+                max: 255
+                minMessage: "Your login must be at least {{ limit }} characters length"
+                maxMessage: "Your login cannot be longer than {{ limit }} characters length"
+        password:
+              - NotBlank: ~
+              - NotNull: ~
+              - Length:
+                  min: 2
+                  max: 255
+                  minMessage: "Your login must be at least {{ limit }} characters length"
+                  maxMessage: "Your login cannot be longer than {{ limit }} characters length"
+

@@ -1,0 +1,26 @@
+acme_api_client:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: 'AcmeApiClientBundle::index.html.twig'
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /doc
+
+rest_users:
+    resource: "@RestUsersBundle/Resources/config/routing.yml"
+    prefix:   /api/v2
+
+acme_blog:
+    resource: "@AcmeBlogBundle/Resources/config/routes.yml"
+    type:     rest
+
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+
+
+
+
+
+

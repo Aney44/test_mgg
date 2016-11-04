@@ -1,0 +1,21 @@
+rest_users:
+    type: rest
+    resource: Rest\UsersBundle\Controller\UserController
+users_homepage:
+    path:     /
+    defaults: { _controller: RestUsersBundle:User:index }
+users_homepage:
+    path:     /
+    defaults: { _controller: RestUsersBundle:User:index }
+
+#partials:
+#    path:     /partials/customers.html
+#    defaults:
+#        _controller: FrameworkBundle:Template:template
+#        template:    partials\customers.html
+#partials2:
+#    path:     /partials/edit-customer.html
+#    defaults:
+#        _controller: FrameworkBundle:Template:template
+#        template:    edit-customer.html
+
