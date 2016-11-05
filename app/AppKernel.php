@@ -31,7 +31,6 @@ class AppKernel extends Kernel
             new Acme\BlogBundle\AcmeBlogBundle(),
             new Acme\ApiClientBundle\AcmeApiClientBundle(),
             new Rest\UsersBundle\RestUsersBundle(),
-            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
         );
 
         // Some bundles are only used while developing the application or during

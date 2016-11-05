@@ -22,7 +22,7 @@ $minorProblems = $symfonyRequirements->getFailedRecommendations();
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Symfony Demo Application</title>
+        <title>Symfony Application</title>
         <link rel="stylesheet" href="css/app.css">
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
     </head>
@@ -33,8 +33,8 @@ $minorProblems = $symfonyRequirements->getFailedRecommendations();
                 <div class="container">
                     <div class="navbar-header">
                         <h1 class="navbar-brand">
-                            Symfony Demo Application <span>/</span> Technical Requirements Checker
-                        </span>
+                            Symfony Application <span>/</span> Technical Requirements Checker</span>
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -131,21 +131,7 @@ $minorProblems = $symfonyRequirements->getFailedRecommendations();
         </div>
 
         <footer>
-            <div class="container">
-                <div class="row">
-                    <div id="footer-copyright" class="col-md-6">
-                        <p>&copy; 2015 - The Symfony Project</p>
-                        <p>MIT License</p>
-                    </div>
-                    <div id="footer-resources" class="col-md-6">
-                        <p>
-                            <a href="https://twitter.com/symfony"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.facebook.com/SensioLabs"><i class="fa fa-facebook"></i></a>
-                            <a href="http://symfony.com/blog"><i class="fa fa-rss"></i></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+
         </footer>
     </body>
 </html>

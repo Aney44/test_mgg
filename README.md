@@ -1,2 +1,20 @@
-# test_mgg
-#try to send
+git clone https://github.com/Aney44/test_mgg.git
+cd test_mgg
+composer install
+
+добавить в AppKernel.php
+new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+
+#Создадим базу
+php app/console doctrine:database:create
+php app/console doctrine:schema:update --force
+php app/console doctrine:fixtures:load
+
+# создадим пользователя для входа в приложение
+php app/console fos:user:create admin admin@email password
+php app/console fos:user:promote admin ROLE_API
+
+
+#стартуем сервер
+php app/console server:run
+http://127.0.0.1:8000/
