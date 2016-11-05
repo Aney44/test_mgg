@@ -55,7 +55,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ "AcmeBlogBundle", "AcmeApiClientBundle" , "RestUsersBundle"  ]
+    bundles:        [ "AcmeBlogBundle", "RestUsersBundle"  ]
 #    filters:
 #        cssrewrite: ~
 #        jsqueeze: ~

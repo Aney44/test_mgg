@@ -29,7 +29,6 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
 
             new Acme\BlogBundle\AcmeBlogBundle(),
-            new Acme\ApiClientBundle\AcmeApiClientBundle(),
             new Rest\UsersBundle\RestUsersBundle(),
         );
 
