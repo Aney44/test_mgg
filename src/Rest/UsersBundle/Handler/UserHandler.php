@@ -57,7 +57,11 @@ class UserHandler
      */
     public function post(array $parameters)
     {
+
         unset($parameters['id']);
+        if(!isset($parameters['src'])){
+            $parameters['src']='2';
+        }
         $user = $this->createUser();
         return $this->processForm($user, $parameters, 'POST');
     }
@@ -108,7 +112,7 @@ class UserHandler
     private function processForm(UserInterface $user, array $parameters, $method = "PUT")
     {
         $form = $this->formFactory->create(new UserType(), $user, array('method' => $method));
-//        print_r($form);
+
         $form->submit($parameters, 'PATCH' !== $method);
 
         if ($form->isValid()) {

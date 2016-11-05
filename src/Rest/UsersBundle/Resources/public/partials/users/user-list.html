@@ -4,7 +4,8 @@
         <th>Id</th>
         <th>Email</th>
         <th>Login</th>
-        <th>Photo</th>
+        <th>Password</th>
+        <!--<th>Photo</th>-->
         <th>Edit</th>
     </tr>
     </thead>
@@ -20,8 +21,11 @@
             {{ user.login }}
         </td>
         <td>
-            <img ng-if="user.src" ng-src="bundles/restusers/photos/{{ user.src }}.jpg" style="width:40px; height:40px">
+            {{ user.password }}
         </td>
+        <!--<td>-->
+            <!--<img ng-if="user.src" ng-src="bundles/restusers/photos/{{ user.src }}.jpg" style="width:40px; height:40px">-->
+        <!--</td>-->
         <td>
             <button class="btn btn-default" ng-click="editPage(user)">
                 <span class="glyphicon glyphicon-cog"></span>

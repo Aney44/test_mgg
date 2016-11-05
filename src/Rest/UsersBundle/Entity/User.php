@@ -45,7 +45,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="src", type="string", length=255)
+     * @ORM\Column(name="src", type="string", length=255, options={"default"=""})
      */
     private $src;
 

@@ -40,12 +40,15 @@ angular.module('ApiClient.controllers', ['ngCookies'])
     .controller('UserController', ['$scope', '$window', 'Restangular', '$modal', function ($scope, $window, Restangular, $modal) {
 
         $scope.users = [];
-        Restangular
-            .all('users').getList()
-            .then(function (response) {
-                $scope.users = response;
-            });
 
+        $scope.getUsersList = function (page) {
+            Restangular
+                .all('users').getList()
+                .then(function (response) {
+                    $scope.users = response;
+                });
+        };
+        $scope.getUsersList(1);
 
         $scope.addPage = function (user) {
             $modal.open({
@@ -53,7 +56,8 @@ angular.module('ApiClient.controllers', ['ngCookies'])
                 templateUrl: assets_path2 + '/users/user-add.html',
                 controller: 'UserModalInstanceCtrl',
                 resolve: {
-                    user: user
+                    user: user,
+                    UserController:$scope
                 }
             });
         };
@@ -64,41 +68,48 @@ angular.module('ApiClient.controllers', ['ngCookies'])
                 templateUrl: assets_path2 + '/users/user-edit.html',
                 controller: 'UserModalInstanceCtrl',
                 resolve: {
-                    user: user
+                    user: user,
+                    UserController:$scope
                 }
-            });
+            }).close()
+            ;
         };
 
     }])
-    .controller('UserModalInstanceCtrl', ['$scope', '$modalInstance', 'Restangular', 'user', function ($scope, $modalInstance, Restangular, user) {
+    .controller('UserModalInstanceCtrl', ['$scope', '$modalInstance', 'Restangular','UserController', 'user', function ($scope, $modalInstance, Restangular,UserController, user) {
 
         $scope.user = user;
         $scope.Restangular = Restangular;
 
+
         $scope.ok = function () {
             $modalInstance.close();
+            UserController.getUsersList(1);
         };
 
         $scope.delete = function (user) {
             user.remove();
             $modalInstance.close();
+            UserController.getUsersList(1);
         };
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
+            UserController.getUsersList(1);
         };
 
         $scope.doneEditing = function (user) {
             user.put();
             $modalInstance.close();
+            UserController.getUsersList(1);
         };
 
         $scope.doneAdd = function (user) {
-            console.log($scope.post);
             Restangular
                 .all('users').post(user)
                 .then(function (response) {
                     $modalInstance.close();
+                    UserController.getUsersList(1);
                 }, function (err) {
                     console.log(err);
                 });
