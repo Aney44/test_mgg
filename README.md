@@ -1,5 +1,6 @@
 ```bash
 git clone https://github.com/Aney44/test_mgg.git
+chmod -R 777 test_mgg
 cd test_mgg
 composer install
 ```

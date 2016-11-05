@@ -118,7 +118,7 @@ fos_rest:
 
 sp_bower:
     bundles:
-        AcmeApiClientBundle: ~
+        RestUsersBundle: ~
     assetic: false
     allow_root: true # optional
 
