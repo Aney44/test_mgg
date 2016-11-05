@@ -5,7 +5,9 @@ cd test_mgg
 composer install
 ```
 добавить в AppKernel.php
+```bash
 new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+```
 
 #Создадим базу
 ```bash
