@@ -61,7 +61,7 @@ class UserHandler
     {
         $query = $this->repository->createQueryBuilder('u')
 //            ->where('u.id >= :id')
-//            ->setParameter('id', '1')
+//            ->setParameter('id', '19')
 //            ->orderBy('p.price', 'ASC')
             ->getQuery();
 
@@ -78,8 +78,10 @@ class UserHandler
             $arUsers[] = $result;
         }
         $arPages = [];
-        for($i=1; $i<=$pagerfanta->getNbPages();$i++){
-            $arPages[] = $i;
+        if(sizeof($arUsers) > 0) {
+            for ($i = 1; $i <= $pagerfanta->getNbPages(); $i++) {
+                $arPages[] = $i;
+            }
         }
 
         $arUsersData = [

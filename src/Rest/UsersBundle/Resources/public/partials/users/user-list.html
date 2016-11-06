@@ -1,3 +1,20 @@
+<div>
+    <ul  class="pagination pagination-centered">
+        <li ng-if="paging.prev>0">
+            <a href="javascript:;"ng-click="getUsersList(paging.prev)" >Prev</a>
+        </li>
+
+        <li ng-repeat="pageNum in paging.pages" ng-class="{'active' : pageNum==paging.current}">
+            <a href="javascript:;"ng-click="getUsersList(pageNum)" >{{pageNum}}</a>
+        </li>
+
+        <li ng-if="paging.next>0">
+            <a href="javascript:;"ng-click="getUsersList(paging.next)" >Next</a>
+        </li>
+    </ul>
+
+</div>
+
 <table class="table">
     <thead>
     <tr>
@@ -35,11 +52,10 @@
     </tr>
     </tbody>
 </table>
-<div ng-repeat="pageNum in paging.pages ">
-    <a href="javascript:;"ng-click="getUsersList(pageNum)">{{pageNum}}</a>
-</div>
 
 <button class="btn btn-default" ng-click="addPage()">
     <span class="glyphicon glyphicon-plus-sign"></span>
 </button>
+
+
 

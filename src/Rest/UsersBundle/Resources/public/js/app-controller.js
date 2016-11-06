@@ -85,14 +85,14 @@ angular.module('ApiClient.controllers', ['ngCookies'])
                     user: user,
                     UserController:$scope
                 }
-            }).close()
-            ;
+            });
         };
 
     }])
     .controller('UserModalInstanceCtrl', ['$scope', '$modalInstance', 'Restangular','UserController', 'user', function ($scope, $modalInstance, Restangular,UserController, user) {
 
         $scope.user = user;
+
         $scope.Restangular = Restangular;
 
 
@@ -102,7 +102,7 @@ angular.module('ApiClient.controllers', ['ngCookies'])
         };
 
         $scope.delete = function (user) {
-            user.remove();
+            Restangular.one("users", user.id).remove();
             $modalInstance.close();
             UserController.getUsersList(1);
         };
@@ -113,7 +113,7 @@ angular.module('ApiClient.controllers', ['ngCookies'])
         };
 
         $scope.doneEditing = function (user) {
-            user.put();
+            Restangular.one('users',user.id).customPUT(user);
             $modalInstance.close();
             UserController.getUsersList(1);
         };
