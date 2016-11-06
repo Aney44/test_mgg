@@ -13,18 +13,27 @@
         <div class="form-group">
             <label>
                 Email
-                <input class="form-control" ng-model="user.email" required>
+                <ul>
+                    <li ng-repeat="error in errors.email">{{ error }}</li>
+                </ul>
+                <input type="email" class="form-control" ng-model="user.email" required>
             </label>
         </div>
         <div class="form-group">
             <label>
                 Login
+                <ul>
+                    <li ng-repeat="error in errors.login">{{ error }}</li>
+                </ul>
                 <input class="form-control" ng-model="user.login" required>
             </label>
         </div>
         <div class="form-group">
             <label>
                 Password
+                <ul>
+                    <li ng-repeat="error in errors.password">{{ error }}</li>
+                </ul>
                 <input class="form-control" ng-model="user.password" required>
             </label>
         </div>

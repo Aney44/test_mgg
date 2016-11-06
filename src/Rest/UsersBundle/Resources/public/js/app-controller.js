@@ -109,13 +109,28 @@ angular.module('ApiClient.controllers', ['ngCookies'])
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
-            UserController.getUsersList(1);
         };
 
         $scope.doneEditing = function (user) {
-            Restangular.one('users',user.id).customPUT(user);
-            $modalInstance.close();
-            UserController.getUsersList(1);
+            // Restangular.one("users", user.id,user).put();
+            // user.put();
+            Restangular
+                .one('users',user.id)
+                .customPUT(user)
+                .then(function (response) {
+                    $modalInstance.close();
+                    UserController.getUsersList(1);
+                }, function (err) {
+                    $scope.error= err.data.message;
+                    $scope.errors ={
+                        'email': err.data.errors.children.email.errors,
+                        'login': err.data.errors.children.login.errors,
+                        'password': err.data.errors.children.password.errors
+                    };
+
+                });
+            // $modalInstance.close();
+            // UserController.getUsersList(1);
         };
 
         $scope.doneAdd = function (user) {
@@ -125,7 +140,13 @@ angular.module('ApiClient.controllers', ['ngCookies'])
                     $modalInstance.close();
                     UserController.getUsersList(1);
                 }, function (err) {
-                    console.log(err);
+                    $scope.error= err.data.message;
+                    $scope.errors ={
+                        'email': err.data.errors.children.email.errors,
+                        'login': err.data.errors.children.login.errors,
+                        'password': err.data.errors.children.password.errors
+                    };
+
                 });
         };
 

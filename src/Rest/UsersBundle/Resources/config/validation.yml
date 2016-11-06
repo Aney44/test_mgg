@@ -7,6 +7,7 @@ Rest\UsersBundle\Entity\User:
             - Email:
                 message: The email "{{ value }}" is not a valid email.
 #                checkMX: true
+            - NotNull: ~
         login:
             - NotBlank: ~
             - NotNull: ~
