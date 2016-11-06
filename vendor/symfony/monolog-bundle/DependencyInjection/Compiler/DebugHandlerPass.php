@@ -42,7 +42,12 @@ class DebugHandlerPass implements CompilerPassInterface
             return;
         }
 
-        $debugHandler = new Definition('%monolog.handler.debug.class%', array(Logger::DEBUG, true));
+        // disable the DebugHandler in CLI as it tends to leak memory if people enable kernel.debug
+        if ('cli' === PHP_SAPI) {
+            return;
+        }
+
+        $debugHandler = new Definition('Symfony\Bridge\Monolog\Handler\DebugHandler', array(Logger::DEBUG, true));
         $container->setDefinition('monolog.handler.debug', $debugHandler);
 
         foreach ($this->channelPass->getChannels() as $channel) {

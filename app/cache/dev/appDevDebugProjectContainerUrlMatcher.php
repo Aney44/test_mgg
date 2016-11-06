@@ -106,7 +106,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->redirect($pathinfo.'/', 'acme_api_client');
             }
 
-            return array (  '_controller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction',  'template' => 'AcmeApiClientBundle::index.html.twig',  '_route' => 'acme_api_client',);
+            return array (  '_controller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction',  'template' => 'RestUsersBundle::index.html.twig',  '_route' => 'acme_api_client',);
         }
 
         // nelmio_api_doc_index

@@ -7,6 +7,8 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Rest\UsersBundle\Model\UserInterface;
 use Rest\UsersBundle\Form\UserType;
 use Rest\UsersBundle\Exception\InvalidFormException;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 
 class UserHandler
 {
@@ -48,6 +50,48 @@ class UserHandler
         return $this->processUser($this->repository->findBy(array(), null, $limit, $offset));
     }
 
+    /**
+     * Get a list of Users.
+     *
+     * @param int $page  page number of list result
+     *
+     * @return array
+     */
+    public function allPerPage($page = 1)
+    {
+        $query = $this->repository->createQueryBuilder('u')
+//            ->where('u.id >= :id')
+//            ->setParameter('id', '1')
+//            ->orderBy('p.price', 'ASC')
+            ->getQuery();
+
+//        $arUsers = $query->getResult();
+
+
+        $adapter = new DoctrineORMAdapter($query);
+        $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setCurrentPage($page);
+
+        $arUsers = [];
+        foreach ($pagerfanta->getCurrentPageResults() as $result) {
+            $arUsers[] = $result;
+        }
+        $arPages = [];
+        for($i=1; $i<=$pagerfanta->getNbPages();$i++){
+            $arPages[] = $i;
+        }
+
+        $arUsersData = [
+            0 => $pagerfanta->hasPreviousPage()?$pagerfanta->getPreviousPage():0,//previous page
+            1 => $pagerfanta->getCurrentPage(),//current page
+            2 => $pagerfanta->hasNextPage()?$pagerfanta->getNextPage():0,//next Page
+            3 => $arPages,//count of pages
+            4 => $arUsers,//users
+        ];
+        return $arUsersData;
+    }
+    
     /**
      * Create a new User.
      *

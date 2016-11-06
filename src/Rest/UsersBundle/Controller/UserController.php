@@ -45,8 +45,7 @@ class UserController extends FOSRestController
      *   }
      * )
      *
-     * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing users.")
-     * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many users to return.")
+     * @Annotations\QueryParam(name="pager", requirements="\d+", nullable=true, description="Users list page")
      *
      * @Annotations\View(
      *  templateVar="users"
@@ -59,12 +58,41 @@ class UserController extends FOSRestController
      */
     public function getUsersAction(Request $request, ParamFetcherInterface $paramFetcher)
     {
-        $offset = $paramFetcher->get('offset');
-        $offset = null == $offset ? 0 : $offset;
-        $limit = $paramFetcher->get('limit');
+        $iPage = $request->query->get('page', 1);
 
-        return $this->container->get('rest_users.user.handler')->all($limit, $offset);
+        return $this->container->get('rest_users.user.handler')->allPerPage($iPage);
     }
+//    /**
+//     * List all users.
+//     *
+//     * @ApiDoc(
+//     *   resource = true,
+//     *   statusCodes = {
+//     *     200 = "Returned when successful"
+//     *   }
+//     * )
+//     *
+//     * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing users.")
+//     * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many users to return.")
+//     *
+//     * @Annotations\View(
+//     *  templateVar="users"
+//     * )
+//     *
+//     * @param Request               $request      the request object
+//     * @param ParamFetcherInterface $paramFetcher param fetcher service
+//     *
+//     * @return array
+//     */
+//    public function getUsersAction(Request $request, ParamFetcherInterface $paramFetcher)
+//    {
+//        $offset = $paramFetcher->get('offset');
+//        $offset = null == $offset ? 0 : $offset;
+//        $limit = $paramFetcher->get('limit');
+//        $users = $this->container->get('rest_users.user.handler')->all($limit, $offset);
+//
+//        return $users;
+//    }
 
     /**
      * Get single User.

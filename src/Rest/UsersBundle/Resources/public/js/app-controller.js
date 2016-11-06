@@ -40,12 +40,26 @@ angular.module('ApiClient.controllers', ['ngCookies'])
     .controller('UserController', ['$scope', '$window', 'Restangular', '$modal', function ($scope, $window, Restangular, $modal) {
 
         $scope.users = [];
+        $scope.paging = {
+            'prev': 0,
+            'current': 0,
+            'next': 0,
+            'pages': 0
+        };
 
         $scope.getUsersList = function (page) {
             Restangular
-                .all('users').getList()
+                .all('users').getList(
+                {'page':page}
+                )
                 .then(function (response) {
-                    $scope.users = response;
+                    $scope.paging ={
+                        'prev': response[0],
+                        'current': response[1],
+                        'next': response[2],
+                        'pages': response[3],
+                    } ;
+                    $scope.users = response[4];
                 });
         };
         $scope.getUsersList(1);

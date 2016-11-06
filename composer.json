@@ -29,7 +29,8 @@
         "sp/bower-bundle"                      : "^0.11.0",
         "willdurand/hateoas-bundle"            : "~1.0.0",
         "friendsofsymfony/user-bundle"         : "^1.3",
-        "nelmio/api-doc-bundle"                : "@dev"
+        "nelmio/api-doc-bundle"                : "@dev",
+        "white-october/pagerfanta-bundle": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

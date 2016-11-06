@@ -190,6 +190,11 @@ the Team.
     'form.new_password' => 'New password:',
     'form.new_password_confirmation' => 'Repeat new password:',
   ),
+  'pagerfanta' => 
+  array (
+    'previous' => 'Previous',
+    'next' => 'Next',
+  ),
   'messages' => 
   array (
     'note' => 'NOTE',

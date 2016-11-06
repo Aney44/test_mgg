@@ -35,6 +35,10 @@
     </tr>
     </tbody>
 </table>
+<div ng-repeat="pageNum in paging.pages ">
+    <a href="javascript:;"ng-click="getUsersList(pageNum)">{{pageNum}}</a>
+</div>
+
 <button class="btn btn-default" ng-click="addPage()">
     <span class="glyphicon glyphicon-plus-sign"></span>
 </button>

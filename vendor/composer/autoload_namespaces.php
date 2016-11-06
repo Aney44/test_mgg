@@ -15,6 +15,7 @@ return array(
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src'),
     'PhpCollection' => array($vendorDir . '/phpcollection/phpcollection/src'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
+    'Pagerfanta\\' => array($vendorDir . '/pagerfanta/pagerfanta/src'),
     'Nelmio\\ApiDocBundle' => array($vendorDir . '/nelmio/api-doc-bundle'),
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
